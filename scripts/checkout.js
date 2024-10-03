@@ -6,6 +6,16 @@ import { renderPaymentSummary } from './checkout/paymentSummary.js';
 //import '../data/backened-practice.js';
 import { loadProducts, loadProductsFetch } from '../data/products.js';
 
+async function loadPage(){
+   await loadProductsFetch();
+   renderCheckoutHeader();
+   renderOrderSummary();
+   renderPaymentSummary();
+}
+
+loadPage();
+
+/*
 Promise.all([
    loadProductsFetch()
 ]).then(()=>{
@@ -13,6 +23,7 @@ Promise.all([
    renderOrderSummary();
    renderPaymentSummary();
 });
+*/
 
 /*
 new Promise((resolve)=>{
