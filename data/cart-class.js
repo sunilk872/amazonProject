@@ -111,7 +111,11 @@ class Cart {
     
       this.saveToStorage();
     }
-  
+
+   resetCart() {
+      cart = [];
+      saveToStorage();
+    }
 }
 
 

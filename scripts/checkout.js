@@ -5,16 +5,23 @@ import { renderPaymentSummary } from './checkout/paymentSummary.js';
 //import '../data/cart-class.js';
 //import '../data/backened-practice.js';
 import { loadProducts, loadProductsFetch } from '../data/products.js';
+import { loadCartFetch } from '../data/cart.js';
 
 async function loadPage(){
    try{
-      await loadProductsFetch();
-      renderCheckoutHeader();
-      renderOrderSummary();
-      renderPaymentSummary();
+
+      await Promise.all([
+         loadProductsFetch(),
+         loadCartFetch()
+       ]);
+       
    } catch (error){
       console.log(error);
    }
+
+   renderCheckoutHeader();
+   renderOrderSummary();
+   renderPaymentSummary();
 }
 
 loadPage();
